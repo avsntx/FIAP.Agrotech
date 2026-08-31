@@ -1,10 +1,22 @@
     :root {
+      --verde-principal: #2f5d3d;
+      --verde-principal-rgb: 47, 93, 61;
+      --marrom-texto: #4b3528;
+      --marrom-texto-rgb: 75, 53, 40;
+      --dourado: #f4c27a;
+      --bege-fundo: #faf6ef;
+      --bege-navbar: #f0ebe2;
+      --verde-hover: #e4f0e6;
+      --vermelho-erro: #dc3545;
+      --vermelho-erro-rgb: 220, 53, 69;
+      --terracota: #c99a7a;
+      --terracota-rgb: 201, 154, 122;
       --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.15);
     }
 
     body {
       font-family: "Nunito Sans", Georgia, serif;
-      background-color: #faf6ef;
+      background-color: var(--bege-fundo);
       min-height: 100%;
       display: flex;
       flex-direction: column;
@@ -33,33 +45,33 @@
     }
 
     .navbar {
-      background-color: #f0ebe2;
+      background-color: var(--bege-navbar);
     }
 
     .navbar-brand {
       font-weight: 800;
-      color: #2f5d3d;
+      color: var(--verde-principal);
       font-size: 25.6px;
       font-family: "Fraunces", Georgia, serif;
     }
 
     .navbar .nav-link {
-      color: #4b3528;
+      color: var(--marrom-texto);
       font-size: 15.2px;
       font-weight: 600;
       border-radius: 13px;
     }
 
     .navbar .nav-link.active {
-      border-bottom: 2px solid #2f5d3d;
+      border-bottom: 2px solid var(--verde-principal);
     }
 
     .navbar .nav-link:hover {
-      color: #2f5d3d;
+      color: var(--verde-principal);
     }
 
     .navbar .btn-btn {
-      color: #2f5d3d;
+      color: var(--verde-principal);
       font-size: 15.2px;
       font-weight: 700;
       padding: 5px 18px;
@@ -67,12 +79,12 @@
     }
 
     .navbar .btn-btn:hover {
-      background-color: #e4f0e6;
+      background-color: var(--verde-hover);
     }
 
     .navbar .btn-success {
-      background-color: #2f5d3d;
-      border-color: #2f5d3d;
+      background-color: var(--verde-principal);
+      border-color: var(--verde-principal);
       border-radius: 13px;
       font-weight: 650;
       font-size: 15.2px;
@@ -84,10 +96,10 @@
     }
 
     .navbar-toggler[aria-expanded="true"] {
-      border: 5px solid #2f5d3d;
+      border: 5px solid var(--verde-principal);
       border-radius: 8px;
       padding: 0.45rem 0.65rem;
-      background-color: #2f5d3d;
+      background-color: var(--verde-principal);
     }
 
     .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
@@ -100,7 +112,7 @@
 
     .container.main {
       padding: 8rem 0 6rem;
-      color: #4b3528;
+      color: var(--marrom-texto);
       display: flex;
       flex-direction: column;
       position: relative;
@@ -122,7 +134,7 @@
     .container.main h1 span {
       position: relative;
       display: inline-block;
-      color: #2f5d3d;
+      color: var(--verde-principal);
       font-style: italic;
     }
 
@@ -152,7 +164,7 @@
     }
 
     .container.main .btn-success {
-      background-color: #2f5d3d;
+      background-color: var(--verde-principal);
       font-size: 16.8px;
       color: white;
       font-weight: 700;
@@ -166,23 +178,23 @@
     }
 
     .container.main .btn-btn {
-      color: #4b3528;
+      color: var(--marrom-texto);
       font-weight: 700;
       border-radius: 13px;
-      border: solid 3px #c99a7a;
+      border: solid 3px var(--terracota);
       display: flex;
       padding: 16px 32px;
     }
 
     .container.main .btn-btn:hover {
-      background-color: #c99a7a33;
+      background-color: rgba(var(--terracota-rgb), 0.2);
     }
 
     .container.main .btn-video {
-      color: #2f5d3d;
+      color: var(--verde-principal);
       font-weight: 700;
       border-radius: 13px;
-      border: solid 3px #2f5d3d;
+      border: solid 3px var(--verde-principal);
       display: flex;
       padding: 16px 32px;
       background-color: transparent;
@@ -191,11 +203,11 @@
 
     .container.main .btn-video:hover {
       transform: translateY(-3px);
-      background-color: #e4f0e6;
+      background-color: var(--verde-hover);
     }
 
     footer {
-      background-color: #4b3528;
+      background-color: var(--marrom-texto);
       font-family: "Nunito Sans", Georgia, serif;
       color: white;
       margin-top: 4rem;
@@ -220,7 +232,7 @@
 
     .navegation,
     .compromisse {
-      color: #f4c27a;
+      color: var(--dourado);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -234,7 +246,7 @@
 
     .footer-link {
       margin-left: -10px;
-      color: #f4c27a;
+      color: var(--dourado);
       padding: 8px 8px;
       text-align: left;
       border: 3px solid transparent;
@@ -242,31 +254,31 @@
     }
 
     .footer-link:hover {
-      border: 3px solid #f4c27a;
+      border: 3px solid var(--dourado);
       border-radius: 18px;
-      color: #f4c27a;
+      color: var(--dourado);
     }
 
     .contact-modal {
       border-radius: 16px;
       border: none;
-      background-color: #faf6ef;
+      background-color: var(--bege-fundo);
     }
 
     .contact-modal .modal-title {
       font-family: "Fraunces", Georgia, serif;
-      color: #4b3528;
+      color: var(--marrom-texto);
       font-weight: 800;
     }
 
     .contact-modal .form-label {
-      color: #4b3528;
+      color: var(--marrom-texto);
       font-weight: 700;
     }
 
     .contact-modal .form-control:focus {
-      border-color: #2f5d3d;
-      box-shadow: 0 0 0 0.2rem rgba(47, 93, 61, 0.15);
+      border-color: var(--verde-principal);
+      box-shadow: 0 0 0 0.2rem rgba(var(--verde-principal-rgb), 0.15);
     }
 
     #sobre.pagina.ativa {
@@ -277,14 +289,14 @@
     #sobre h3,
     #sobre h4,
     #sobre h5 {
-      color: #4b3528;
+      color: var(--marrom-texto);
       font-family: "Fraunces", Georgia, serif;
       font-weight: 700;
     }
 
     #sobre .card {
       background-color: #fffaf2;
-      border: 1px solid rgba(75, 53, 40, 0.12);
+      border: 1px solid rgba(var(--marrom-texto-rgb), 0.12);
       border-radius: 14px;
       transition: transform 0.2s ease, background-color 0.2s ease;
     }
@@ -296,7 +308,7 @@
 
     #sobre p,
     #sobre li {
-      color: #4b3528;
+      color: var(--marrom-texto);
       font-family: "Nunito Sans", Georgia, serif;
     }
 
@@ -307,11 +319,11 @@
     #sobre .card-ods h1,
     #sobre .card-ods h4,
     #sobre .card-ods p {
-      color: #f0ebe2;
+      color: var(--bege-navbar);
     }
 
     .texto-erro {
-      color: #dc3545;
+      color: var(--vermelho-erro);
       font-size: 13px;
       margin-top: 4px;
       display: none;
@@ -322,8 +334,8 @@
     }
 
     .campo-invalido {
-      border-color: #dc3545 !important;
-      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15) !important;
+      border-color: var(--vermelho-erro) !important;
+      box-shadow: 0 0 0 0.2rem rgba(var(--vermelho-erro-rgb), 0.15) !important;
     }
 
     .contador-chars {
@@ -337,7 +349,7 @@
       .navbar-collapse.show {
         margin-top: 1rem;
         padding: 1rem 0 1.25rem;
-        border-top: 1px solid rgba(47, 93, 61, 0.25);
+        border-top: 1px solid rgba(var(--verde-principal-rgb), 0.25);
       }
 
       .navbar-nav {
@@ -346,13 +358,13 @@
 
       .navbar .nav-link {
         padding: 0.75rem 0;
-        color: #4b3528;
+        color: var(--marrom-texto);
         font-weight: 500;
       }
 
       .navbar .nav-link.active {
         border-bottom: none;
-        color: #2f5d3d;
+        color: var(--verde-principal);
         font-weight: 700;
       }
 
@@ -362,7 +374,7 @@
         gap: 0.75rem !important;
         margin-top: 0.75rem;
         padding-top: 1rem;
-        border-top: 1px solid rgba(47, 93, 61, 0.15);
+        border-top: 1px solid rgba(var(--verde-principal-rgb), 0.15);
       }
 
       .container.main .d-flex {
