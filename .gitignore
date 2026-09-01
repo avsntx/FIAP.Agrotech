@@ -22,6 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# backup local (nao versionar)
-_backup-fase5-completo.tar.gz
