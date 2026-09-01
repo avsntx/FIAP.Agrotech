@@ -230,6 +230,16 @@
       font-family: "Fraunces", Georgia, serif;
     }
 
+    .brand-name {
+      color: var(--dourado);
+    }
+
+    .brand-description {
+      color: var(--terracota);
+      display: block;
+      max-width: 80%;
+    }
+
     .navegation,
     .compromisse {
       color: var(--dourado);

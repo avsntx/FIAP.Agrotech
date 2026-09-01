@@ -25,13 +25,13 @@
       <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#" onclick="mostrarPagina(event, 'inicio', this)">Início</a>
+            <a class="nav-link active" href="#" data-pagina="inicio">Início</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Diretório</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="mostrarPagina(event, 'sobre', this)">Sobre</a>
+            <a class="nav-link" href="#" data-pagina="sobre">Sobre</a>
           </li>
         </ul>
 
@@ -131,9 +131,9 @@
       <div class="brand">
         <div class="brand-logo">
           <span class="logo-icon">🌿</span>
-          <span style="color: #f4c27a">Nativy</span>
+          <span class="brand-name">Nativy</span>
         </div>
-        <span class="brand-description" style="color: #c99a7a; display: block; max-width: 80%;">
+        <span class="brand-description">
           Uma rede que conecta pequenos produtores, estabelecimentos e ONGs para reduzir o desperdício alimentar e combater a fome.
         </span>
         <button type="button" class="btn footer-link" data-bs-toggle="modal" data-bs-target="#contatoModal">Fale conosco</button>

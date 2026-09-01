@@ -1,6 +1,4 @@
-    function mostrarPagina(event, id, linkClicado) {
-      event.preventDefault();
-
+    function mostrarPagina(id, linkClicado) {
       var paginas = document.querySelectorAll('.pagina');
       paginas.forEach(function(pagina) {
         pagina.classList.remove('ativa');
@@ -15,6 +13,13 @@
 
       linkClicado.classList.add('active');
     }
+
+    document.querySelectorAll('.nav-link[data-pagina]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        mostrarPagina(this.dataset.pagina, this);
+      });
+    });
 
     function validarNomeCompleto(valor) {
       if (valor.trim() === '') return 'O nome não pode ficar em branco.';
