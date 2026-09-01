@@ -1,0 +1,8 @@
+body {
+  font-family: "Nunito Sans", Georgia, serif;
+  background-color: var(--bege-fundo);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
