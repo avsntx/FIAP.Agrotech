@@ -1,8 +1,11 @@
 body {
   font-family: "Nunito Sans", Georgia, serif;
   background-color: var(--bege-fundo);
-  min-height: 100vh;
   margin: 0;
+}
+
+#root {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -13,6 +16,7 @@ body {
 
 .pagina.ativa {
   display: block;
+  flex: 1;
 }
 
 .logo-icon {
