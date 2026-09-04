@@ -56,7 +56,7 @@ function Navbar({ paginaAtiva, onNavigate }) {
           </ul>
 
           <div className="d-flex align-items-center gap-3">
-            <a className="btn btn-btn" href="">Entrar</a>
+            <a className="btn btn-btn" data-bs-toggle="modal" data-bs-target="#entrarModal">Entrar</a>
             <a className="btn btn-success" data-bs-toggle="modal" data-bs-target="#criarContaModal">
               Criar conta
             </a>

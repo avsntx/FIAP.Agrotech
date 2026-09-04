@@ -317,6 +317,34 @@ footer {
   color: var(--bege-navbar);
 }
 
+#diretorio.pagina.ativa {
+  padding: 4rem 11rem;
+}
+
+#diretorio h1 {
+  color: var(--marrom-texto);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+}
+
+#diretorio .card {
+  background-color: #fffaf2;
+  border: 1px solid rgba(var(--marrom-texto-rgb), 0.12);
+  border-radius: 14px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#diretorio .card:hover {
+  transform: translateY(-3px);
+  cursor: default;
+}
+
+#diretorio p,
+#diretorio li {
+  color: var(--marrom-texto);
+  font-family: "Nunito Sans", Georgia, serif;
+}
+
 .texto-erro {
   color: var(--vermelho-erro);
   font-size: 13px;
@@ -386,6 +414,10 @@ footer {
   }
 
   #sobre.pagina.ativa {
+    padding: 3rem 1rem;
+  }
+
+  #diretorio.pagina.ativa {
     padding: 3rem 1rem;
   }
 }
