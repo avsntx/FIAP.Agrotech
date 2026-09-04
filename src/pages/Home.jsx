@@ -25,7 +25,7 @@ function Home({ ativa, onNavigate }) {
           </a>
           <a
             className="btn btn-video"
-            href="https://vimeo.com/manage/videos/1194996775"
+            href="https://www.youtube.com/watch?v=FfcAUoAydCg"
             target="_blank"
             rel="noopener noreferrer"
           >

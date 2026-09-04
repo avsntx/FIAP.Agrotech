@@ -1,16 +1,40 @@
-# React + Vite
+# Nativy - Agrotech (FIAP, Fase 5)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site da Nativy, uma rede que conecta pequenos produtores rurais, estabelecimentos com excedente alimentar e ONGs de distribuicao para reduzir o desperdicio de alimentos.
 
-Currently, two official plugins are available:
+Projeto desenvolvido para o PBL Agrotech da FIAP. Na Fase 5 o site da Fase 4 foi reconstruido em React e ganhou uma nova funcionalidade: o Diretorio, com busca em tempo real por nome, tipo e localizacao.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Links
 
-## React Compiler
+- Deploy (Vercel): https://fiap-agrotech-eight.vercel.app
+- Pitch Video: https://www.youtube.com/watch?v=FfcAUoAydCg
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologias
 
-## Expanding the Oxlint configuration
+- React 19
+- Vite
+- Bootstrap 5
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Estrutura
+
+```
+src/
+  App.jsx            monta o site e controla qual pagina esta ativa (useState)
+  components/        Navbar, Footer e os modais de Criar conta, Entrar e Fale conosco
+  pages/             Home, Sobre e Diretorio
+  styles/            variaveis de cor
+  index.css          estilos gerais
+```
+
+## Como rodar
+
+```
+npm install
+npm run dev
+```
+
+Para gerar a versao de producao:
+
+```
+npm run build
+```
