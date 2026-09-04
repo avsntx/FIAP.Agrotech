@@ -1,4 +1,4 @@
-function Home({ ativa }) {
+function Home({ ativa, onNavigate }) {
   return (
     <section id="inicio" className={`pagina${ativa ? ' ativa' : ''}`}>
       <div className="container main text-center">
@@ -13,7 +13,16 @@ function Home({ ativa }) {
           <a className="btn btn-success" data-bs-toggle="modal" data-bs-target="#criarContaModal">
             Criar minha conta
           </a>
-          <a className="btn btn-btn">Explorar a rede</a>
+          <a
+            className="btn btn-btn"
+            href="#"
+            onClick={(event) => {
+              event.preventDefault()
+              onNavigate('diretorio')
+            }}
+          >
+            Explorar a rede
+          </a>
           <a
             className="btn btn-video"
             href="https://vimeo.com/manage/videos/1194996775"

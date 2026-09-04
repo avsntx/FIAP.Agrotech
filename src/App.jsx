@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Navbar paginaAtiva={paginaAtiva} onNavigate={setPaginaAtiva} />
-      <Home ativa={paginaAtiva === 'inicio'} />
+      <Home ativa={paginaAtiva === 'inicio'} onNavigate={setPaginaAtiva} />
       <Sobre ativa={paginaAtiva === 'sobre'} />
       <Diretorio ativa={paginaAtiva === 'diretorio'} />
       <Footer onNavigate={setPaginaAtiva} />
