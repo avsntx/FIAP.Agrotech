@@ -1,52 +1,54 @@
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import BootstrapNavbar from 'react-bootstrap/Navbar'
 
 function Navbar({ onAbrirModal }) {
-  return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container">
-        <span className="logo-icon">🌿</span>
-        <Link className="navbar-brand" to="/">Nativy</Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#menu"
-          aria-controls="menu"
-          aria-expanded="false"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+  const [menuAberto, setMenuAberto] = useState(false)
 
-        <div className="collapse navbar-collapse" id="menu">
-          <ul className="navbar-nav mx-auto">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/" end>
-                Início
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/diretorio">
-                Diretório
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sobre">
-                Sobre
-              </NavLink>
-            </li>
-          </ul>
+  function fecharMenu() {
+    setMenuAberto(false)
+  }
+
+  function abrirModal(nome) {
+    setMenuAberto(false)
+    onAbrirModal(nome)
+  }
+
+  return (
+    <BootstrapNavbar expand="lg" expanded={menuAberto} onToggle={setMenuAberto}>
+      <Container>
+        <span className="logo-icon">🌿</span>
+        <BootstrapNavbar.Brand as={Link} to="/" onClick={fecharMenu}>
+          Nativy
+        </BootstrapNavbar.Brand>
+        <BootstrapNavbar.Toggle aria-controls="menu" aria-expanded={menuAberto} label="Abrir menu" />
+
+        <BootstrapNavbar.Collapse id="menu">
+          <Nav className="mx-auto">
+            <Nav.Link as={NavLink} to="/" end onClick={fecharMenu}>
+              Início
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/diretorio" onClick={fecharMenu}>
+              Diretório
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/sobre" onClick={fecharMenu}>
+              Sobre
+            </Nav.Link>
+          </Nav>
 
           <div className="d-flex align-items-center gap-3">
-            <button type="button" className="btn btn-btn" onClick={() => onAbrirModal('entrar')}>
+            <button type="button" className="btn btn-btn" onClick={() => abrirModal('entrar')}>
               Entrar
             </button>
-            <button type="button" className="btn btn-success" onClick={() => onAbrirModal('criarConta')}>
+            <button type="button" className="btn btn-success" onClick={() => abrirModal('criarConta')}>
               Criar conta
             </button>
           </div>
-        </div>
-      </div>
-    </nav>
+        </BootstrapNavbar.Collapse>
+      </Container>
+    </BootstrapNavbar>
   )
 }
 
