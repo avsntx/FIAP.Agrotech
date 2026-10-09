@@ -19,8 +19,8 @@ function Navbar({ onAbrirModal }) {
   return (
     <BootstrapNavbar expand="lg" expanded={menuAberto} onToggle={setMenuAberto}>
       <Container>
-        <span className="logo-icon">🌿</span>
         <BootstrapNavbar.Brand as={Link} to="/" onClick={fecharMenu}>
+          <span className="logo-icon" aria-hidden="true">🌿</span>
           Nativy
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="menu" aria-expanded={menuAberto} label="Abrir menu" />
