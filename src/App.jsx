@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import CriarContaModal from './components/CriarContaModal.jsx'
@@ -9,15 +10,23 @@ import Sobre from './pages/Sobre.jsx'
 import Diretorio from './pages/Diretorio.jsx'
 
 function App() {
-  const [paginaAtiva, setPaginaAtiva] = useState('inicio')
+  const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   return (
     <>
-      <Navbar paginaAtiva={paginaAtiva} onNavigate={setPaginaAtiva} />
-      <Home ativa={paginaAtiva === 'inicio'} onNavigate={setPaginaAtiva} />
-      <Sobre ativa={paginaAtiva === 'sobre'} />
-      <Diretorio ativa={paginaAtiva === 'diretorio'} />
-      <Footer onNavigate={setPaginaAtiva} />
+      <Navbar />
+      <main className="conteudo">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/diretorio" element={<Diretorio />} />
+          <Route path="/sobre" element={<Sobre />} />
+        </Routes>
+      </main>
+      <Footer />
       <CriarContaModal />
       <EntrarModal />
       <ContatoModal />

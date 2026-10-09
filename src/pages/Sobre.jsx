@@ -1,6 +1,6 @@
-function Sobre({ ativa }) {
+function Sobre() {
   return (
-    <section id="sobre" className={`pagina${ativa ? ' ativa' : ''}`}>
+    <section id="sobre">
       <div className="row mb-5">
         <div className="col-12">
           <h1>Sobre a Nativy</h1>

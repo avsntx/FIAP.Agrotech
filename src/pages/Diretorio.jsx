@@ -51,7 +51,7 @@ const classesPorTipo = {
   ONG: 'bg-secondary',
 }
 
-function Diretorio({ ativa }) {
+function Diretorio() {
   const [busca, setBusca] = useState('')
 
   const termo = busca.trim().toLowerCase()
@@ -64,7 +64,7 @@ function Diretorio({ ativa }) {
   })
 
   return (
-    <section id="diretorio" className={`pagina${ativa ? ' ativa' : ''}`}>
+    <section id="diretorio">
       <div className="row mb-4">
         <div className="col-12">
           <h1>Diretório</h1>

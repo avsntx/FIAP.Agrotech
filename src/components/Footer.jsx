@@ -1,11 +1,6 @@
-function Footer({ onNavigate }) {
-  function irPara(pagina) {
-    return function (event) {
-      event.preventDefault()
-      onNavigate(pagina)
-    }
-  }
+import { Link } from 'react-router'
 
+function Footer() {
   return (
     <footer>
       <div className="container fotter-main">
@@ -29,17 +24,17 @@ function Footer({ onNavigate }) {
 
         <div className="navegation">
           <span>NAVEGAR</span>
-          <a className="btn" href="#" onClick={irPara('inicio')}>Início</a>
-          <a className="btn" href="#" onClick={irPara('diretorio')}>Diretório</a>
-          <a className="btn" href="#" onClick={irPara('sobre')}>Sobre o Projeto</a>
+          <Link className="btn" to="/">Início</Link>
+          <Link className="btn" to="/diretorio">Diretório</Link>
+          <Link className="btn" to="/sobre">Sobre o Projeto</Link>
           <a className="btn" data-bs-toggle="modal" data-bs-target="#criarContaModal">Cadastro</a>
         </div>
 
         <div className="compromisse">
           <span>COMPROMISSO</span>
-          <a href="#" className="btn" onClick={irPara('sobre')}>ODS 2 - Fome Zero</a>
-          <a href="#" className="btn" onClick={irPara('sobre')}>Meta 2.3 da ONU</a>
-          <a href="#" className="btn" onClick={irPara('sobre')}>Valorização Cultural</a>
+          <Link className="btn" to="/sobre">ODS 2 - Fome Zero</Link>
+          <Link className="btn" to="/sobre">Meta 2.3 da ONU</Link>
+          <Link className="btn" to="/sobre">Valorização Cultural</Link>
         </div>
       </div>
     </footer>

@@ -1,6 +1,8 @@
-function Home({ ativa, onNavigate }) {
+import { Link } from 'react-router'
+
+function Home() {
   return (
-    <section id="inicio" className={`pagina${ativa ? ' ativa' : ''}`}>
+    <section id="inicio">
       <div className="container main text-center">
         <div className="container">
           <h1>Raízes que <span>alimentam</span>, laços que transformam.</h1>
@@ -13,16 +15,9 @@ function Home({ ativa, onNavigate }) {
           <a className="btn btn-success" data-bs-toggle="modal" data-bs-target="#criarContaModal">
             Criar minha conta
           </a>
-          <a
-            className="btn btn-btn"
-            href="#"
-            onClick={(event) => {
-              event.preventDefault()
-              onNavigate('diretorio')
-            }}
-          >
+          <Link className="btn btn-btn" to="/diretorio">
             Explorar a rede
-          </a>
+          </Link>
           <a
             className="btn btn-video"
             href="https://www.youtube.com/watch?v=FfcAUoAydCg"

@@ -1,9 +1,11 @@
-function Navbar({ paginaAtiva, onNavigate }) {
+import { Link, NavLink } from 'react-router'
+
+function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
         <span className="logo-icon">🌿</span>
-        <a className="navbar-brand" href="#inicio">Nativy</a>
+        <Link className="navbar-brand" to="/">Nativy</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -18,40 +20,19 @@ function Navbar({ paginaAtiva, onNavigate }) {
         <div className="collapse navbar-collapse" id="menu">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <a
-                className={`nav-link${paginaAtiva === 'inicio' ? ' active' : ''}`}
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault()
-                  onNavigate('inicio')
-                }}
-              >
+              <NavLink className="nav-link" to="/" end>
                 Início
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a 
-                className={`nav-link${paginaAtiva === 'diretorio' ? ' active' : ''}`}
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault()
-                  onNavigate('diretorio')
-                }}
-              >
+              <NavLink className="nav-link" to="/diretorio">
                 Diretório
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a
-                className={`nav-link${paginaAtiva === 'sobre' ? ' active' : ''}`}
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault()
-                  onNavigate('sobre')
-                }}
-              >
+              <NavLink className="nav-link" to="/sobre">
                 Sobre
-              </a>
+              </NavLink>
             </li>
           </ul>
 

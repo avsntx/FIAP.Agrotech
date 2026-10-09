@@ -10,12 +10,7 @@ body {
   flex-direction: column;
 }
 
-.pagina {
-  display: none;
-}
-
-.pagina.ativa {
-  display: block;
+.conteudo {
   flex: 1;
 }
 
@@ -280,7 +275,7 @@ footer {
   box-shadow: 0 0 0 0.2rem rgba(var(--verde-principal-rgb), 0.15);
 }
 
-#sobre.pagina.ativa {
+#sobre {
   padding: 4rem 11rem;
 }
 
@@ -321,7 +316,7 @@ footer {
   color: var(--bege-navbar);
 }
 
-#diretorio.pagina.ativa {
+#diretorio {
   padding: 4rem 11rem;
 }
 
@@ -417,11 +412,11 @@ footer {
     max-width: 100%;
   }
 
-  #sobre.pagina.ativa {
+  #sobre {
     padding: 3rem 1rem;
   }
 
-  #diretorio.pagina.ativa {
+  #diretorio {
     padding: 3rem 1rem;
   }
 }
