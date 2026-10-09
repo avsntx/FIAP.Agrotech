@@ -1,3 +1,6 @@
+import { Link } from 'react-router'
+import selos from '../data/selos.js'
+
 function Sobre() {
   return (
     <section id="sobre">
@@ -23,6 +26,13 @@ function Sobre() {
               <h3 className="mb-3">Valorização cultural</h3>
               <p>Cada produtor tem espaço para contar sua história, suas práticas e o saber da sua comunidade. Povos indígenas, quilombolas, caiçaras, pescadores artesanais, agricultores familiares e mulheres do campo são parte essencial da biodiversidade cultural que alimenta o Brasil.</p>
               <p className="mb-0">Os selos de identificação dão visibilidade imediata a esses grupos e ajudam consumidores, estabelecimentos e ONGs a reconhecer e apoiar seu trabalho.</p>
+              <div className="selos">
+                {Object.values(selos).map((selo) => (
+                  <span key={selo.id} className="selo" title={selo.getDescricaoCompleta()}>
+                    {selo.nome}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -30,6 +40,9 @@ function Sobre() {
             <div className="card-body p-4">
               <h3 className="mb-3">Rastreabilidade com QR Code</h3>
               <p className="mb-0">Cada lote cadastrado gera um QR Code único que pode ser impresso em embalagens, etiquetas ou recibos. Ao escanear, qualquer pessoa acessa informações do produto e conhece quem produziu.</p>
+              <Link className="link-rastreio" to="/rastreabilidade">
+                Experimente a rastreabilidade →
+              </Link>
             </div>
           </div>
         </div>
