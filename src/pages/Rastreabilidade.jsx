@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
+import { QRCodeSVG } from 'qrcode.react'
 import diretorio from '../data/participantes.js'
 import { dataDaquiA, formatarData } from '../utils/datas.js'
 
@@ -217,6 +218,16 @@ function Rastreabilidade() {
                   <strong>{ultimoLote.produto}</strong> · {ultimoLote.quantidade} {ultimoLote.unidade}
                 </p>
                 <p className="mb-0">{ultimoLote.produtor.nome}</p>
+                <div className="qr-code mt-3">
+                  <QRCodeSVG
+                    value={window.location.origin + ultimoLote.getLinkRastreio()}
+                    size={180}
+                    marginSize={2}
+                    fgColor="#4b3528"
+                    title={`QR Code do lote ${ultimoLote.codigo}`}
+                  />
+                  <p className="legenda-qr">Aponte a câmera do celular para abrir o lote</p>
+                </div>
                 <Link className="btn btn-success mt-3" to={ultimoLote.getLinkRastreio()}>
                   Ver página do lote
                 </Link>
@@ -242,19 +253,30 @@ function Rastreabilidade() {
         {lotes.map((lote) => (
           <div className="col-md-6 col-lg-4" key={lote.codigo}>
             <div className="card h-100">
-              <div className="card-body p-4">
-                <span className={`badge ${classesPorStatus[lote.getStatus()]} mb-2`}>{lote.getStatus()}</span>
-                <h3 className="h5 mb-1">{lote.produto}</h3>
-                <p className="codigo-lote mb-2">{lote.codigo}</p>
-                <p className="mb-1">
-                  {lote.quantidade} {lote.unidade} · {lote.produtor.nome}
-                </p>
-                <p className="mb-0">
-                  Colheita: {formatarData(lote.dataColheita)} · Validade: {formatarData(lote.validade)}
-                </p>
-                <Link className="link-rastreio" to={lote.getLinkRastreio()}>
-                  Ver rastreio →
-                </Link>
+              <div className="card-body p-4 d-flex gap-3">
+                <div className="flex-grow-1">
+                  <span className={`badge ${classesPorStatus[lote.getStatus()]} mb-2`}>{lote.getStatus()}</span>
+                  <h3 className="h5 mb-1">{lote.produto}</h3>
+                  <p className="codigo-lote mb-2">{lote.codigo}</p>
+                  <p className="mb-1">
+                    {lote.quantidade} {lote.unidade} · {lote.produtor.nome}
+                  </p>
+                  <p className="mb-0">
+                    Colheita: {formatarData(lote.dataColheita)} · Validade: {formatarData(lote.validade)}
+                  </p>
+                  <Link className="link-rastreio" to={lote.getLinkRastreio()}>
+                    Ver rastreio →
+                  </Link>
+                </div>
+                <div className="qr-code">
+                  <QRCodeSVG
+                    value={window.location.origin + lote.getLinkRastreio()}
+                    size={88}
+                    marginSize={2}
+                    fgColor="#4b3528"
+                    title={`QR Code do lote ${lote.codigo}`}
+                  />
+                </div>
               </div>
             </div>
           </div>

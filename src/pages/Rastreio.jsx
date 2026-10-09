@@ -1,4 +1,5 @@
 import { Link, useParams, useSearchParams } from 'react-router'
+import { QRCodeSVG } from 'qrcode.react'
 import diretorio from '../data/participantes.js'
 import Lote from '../models/Lote.js'
 import Produtor from '../models/Produtor.js'
@@ -96,7 +97,23 @@ function Rastreio() {
           </div>
         </div>
 
-        <div className="col-lg-4">
+        <div className="col-lg-4 d-flex flex-column gap-4">
+          <div className="card text-center">
+            <div className="card-body p-4">
+              <h4 className="mb-3">QR Code do lote</h4>
+              <div className="qr-code">
+                <QRCodeSVG
+                  value={window.location.origin + lote.getLinkRastreio()}
+                  size={160}
+                  marginSize={2}
+                  fgColor="#4b3528"
+                  title={`QR Code do lote ${lote.codigo}`}
+                />
+              </div>
+              <p className="mt-3 mb-0">Pode ser impresso na embalagem ou compartilhado com quem comprou.</p>
+            </div>
+          </div>
+
           <div className="card card-ods">
             <div className="card-body p-4">
               <h4 className="mb-3">Por que rastrear?</h4>
