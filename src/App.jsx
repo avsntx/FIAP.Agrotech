@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
@@ -12,26 +12,31 @@ import NaoEncontrada from './pages/NaoEncontrada.jsx'
 
 function App() {
   const location = useLocation()
+  const [modalAberto, setModalAberto] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
 
+  function fecharModal() {
+    setModalAberto(null)
+  }
+
   return (
     <>
-      <Navbar />
+      <Navbar onAbrirModal={setModalAberto} />
       <main className="conteudo">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home onAbrirModal={setModalAberto} />} />
           <Route path="/diretorio" element={<Diretorio />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<NaoEncontrada />} />
         </Routes>
       </main>
-      <Footer />
-      <CriarContaModal />
-      <EntrarModal />
-      <ContatoModal />
+      <Footer onAbrirModal={setModalAberto} />
+      <CriarContaModal aberto={modalAberto === 'criarConta'} onFechar={fecharModal} />
+      <EntrarModal aberto={modalAberto === 'entrar'} onFechar={fecharModal} />
+      <ContatoModal aberto={modalAberto === 'contato'} onFechar={fecharModal} />
     </>
   )
 }

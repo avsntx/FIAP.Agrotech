@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 
-function Footer() {
+function Footer({ onAbrirModal }) {
   return (
     <footer>
       <div className="container fotter-main">
@@ -12,12 +12,7 @@ function Footer() {
           <span className="brand-description">
             Uma rede que conecta pequenos produtores, estabelecimentos e ONGs para reduzir o desperdício alimentar e combater a fome.
           </span>
-          <button
-            type="button"
-            className="btn footer-link"
-            data-bs-toggle="modal"
-            data-bs-target="#contatoModal"
-          >
+          <button type="button" className="btn footer-link" onClick={() => onAbrirModal('contato')}>
             Fale conosco
           </button>
         </div>
@@ -27,7 +22,9 @@ function Footer() {
           <Link className="btn" to="/">Início</Link>
           <Link className="btn" to="/diretorio">Diretório</Link>
           <Link className="btn" to="/sobre">Sobre o Projeto</Link>
-          <a className="btn" data-bs-toggle="modal" data-bs-target="#criarContaModal">Cadastro</a>
+          <button type="button" className="btn" onClick={() => onAbrirModal('criarConta')}>
+            Cadastro
+          </button>
         </div>
 
         <div className="compromisse">

@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router'
 
-function Navbar() {
+function Navbar({ onAbrirModal }) {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -37,10 +37,12 @@ function Navbar() {
           </ul>
 
           <div className="d-flex align-items-center gap-3">
-            <a className="btn btn-btn" data-bs-toggle="modal" data-bs-target="#entrarModal">Entrar</a>
-            <a className="btn btn-success" data-bs-toggle="modal" data-bs-target="#criarContaModal">
+            <button type="button" className="btn btn-btn" onClick={() => onAbrirModal('entrar')}>
+              Entrar
+            </button>
+            <button type="button" className="btn btn-success" onClick={() => onAbrirModal('criarConta')}>
               Criar conta
-            </a>
+            </button>
           </div>
         </div>
       </div>

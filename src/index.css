@@ -232,8 +232,8 @@ footer {
   align-items: flex-start;
 }
 
-.navegation a,
-.compromisse a {
+.navegation .btn,
+.compromisse .btn {
   color: #f4e8dc;
   padding: 8px 0;
 }

@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { Modal } from 'bootstrap'
+import { useState } from 'react'
+import Modal from 'react-bootstrap/Modal'
 
 const CAMPOS_INICIAIS = {
   nome: '',
@@ -24,13 +24,18 @@ function validarEmailFormato(valor) {
   return null
 }
 
-function ContatoModal() {
-  const modalRef = useRef(null)
+function ContatoModal({ aberto, onFechar }) {
   const [campos, setCampos] = useState(CAMPOS_INICIAIS)
   const [erros, setErros] = useState({})
 
   function atualizarCampo(campo, valor) {
     setCampos((atual) => ({ ...atual, [campo]: valor }))
+  }
+
+  function fechar() {
+    setCampos(CAMPOS_INICIAIS)
+    setErros({})
+    onFechar()
   }
 
   function handleSubmit(event) {
@@ -55,101 +60,88 @@ function ContatoModal() {
     setErros(novosErros)
 
     if (Object.keys(novosErros).length === 0) {
-      setCampos(CAMPOS_INICIAIS)
-      Modal.getInstance(modalRef.current)?.hide()
+      fechar()
     }
   }
 
   return (
-    <div
-      className="modal fade"
-      id="contatoModal"
-      tabIndex="-1"
-      aria-labelledby="contatoModalLabel"
-      aria-hidden="true"
-      ref={modalRef}
-    >
-      <div className="modal-dialog">
-        <div className="modal-content contact-modal">
-          <div className="modal-header">
-            <h2 className="modal-title" id="contatoModalLabel">Fale conosco</h2>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+    <Modal show={aberto} onHide={fechar} contentClassName="contact-modal" aria-labelledby="contatoModalLabel">
+      <Modal.Header closeButton closeLabel="Fechar">
+        <Modal.Title as="h2" id="contatoModalLabel">Fale conosco</Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+        <form id="formContato" noValidate onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="nome" className="form-label">Nome completo</label>
+            <input
+              type="text"
+              className={`form-control${erros.nome ? ' campo-invalido' : ''}`}
+              id="nome"
+              name="nome"
+              maxLength="80"
+              placeholder="Digite seu nome completo"
+              value={campos.nome}
+              onChange={(event) => atualizarCampo('nome', event.target.value)}
+            />
+            <span className={`texto-erro${erros.nome ? ' visivel' : ''}`}>{erros.nome}</span>
           </div>
 
-          <div className="modal-body">
-            <form id="formContato" noValidate onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="nome" className="form-label">Nome completo</label>
-                <input
-                  type="text"
-                  className={`form-control${erros.nome ? ' campo-invalido' : ''}`}
-                  id="nome"
-                  name="nome"
-                  maxLength="80"
-                  placeholder="Digite seu nome completo"
-                  value={campos.nome}
-                  onChange={(event) => atualizarCampo('nome', event.target.value)}
-                />
-                <span className={`texto-erro${erros.nome ? ' visivel' : ''}`}>{erros.nome}</span>
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">E-mail</label>
-                <input
-                  type="email"
-                  className={`form-control${erros.email ? ' campo-invalido' : ''}`}
-                  id="email"
-                  name="email"
-                  placeholder="exemplo@email.com"
-                  value={campos.email}
-                  onChange={(event) => atualizarCampo('email', event.target.value)}
-                />
-                <span className={`texto-erro${erros.email ? ' visivel' : ''}`}>{erros.email}</span>
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="assunto" className="form-label">Assunto</label>
-                <select
-                  className={`form-select${erros.assunto ? ' campo-invalido' : ''}`}
-                  id="assunto"
-                  name="assunto"
-                  value={campos.assunto}
-                  onChange={(event) => atualizarCampo('assunto', event.target.value)}
-                >
-                  <option value="">Escolha uma opção</option>
-                  <option value="duvida">Dúvida</option>
-                  <option value="sugestao">Sugestão</option>
-                  <option value="participar">Quero participar</option>
-                  <option value="outro">Outro</option>
-                </select>
-                <span className={`texto-erro${erros.assunto ? ' visivel' : ''}`}>{erros.assunto}</span>
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="mensagem" className="form-label">Mensagem</label>
-                <textarea
-                  className={`form-control${erros.mensagem ? ' campo-invalido' : ''}`}
-                  id="mensagem"
-                  name="mensagem"
-                  rows="4"
-                  maxLength="500"
-                  placeholder="Digite sua mensagem"
-                  value={campos.mensagem}
-                  onChange={(event) => atualizarCampo('mensagem', event.target.value)}
-                ></textarea>
-                <div className="contador-chars">{campos.mensagem.length}/500</div>
-                <span className={`texto-erro${erros.mensagem ? ' visivel' : ''}`}>{erros.mensagem}</span>
-              </div>
-
-              <div className="modal-footer px-0 pb-0">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" className="btn btn-success">Enviar</button>
-              </div>
-            </form>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">E-mail</label>
+            <input
+              type="email"
+              className={`form-control${erros.email ? ' campo-invalido' : ''}`}
+              id="email"
+              name="email"
+              placeholder="exemplo@email.com"
+              value={campos.email}
+              onChange={(event) => atualizarCampo('email', event.target.value)}
+            />
+            <span className={`texto-erro${erros.email ? ' visivel' : ''}`}>{erros.email}</span>
           </div>
-        </div>
-      </div>
-    </div>
+
+          <div className="mb-3">
+            <label htmlFor="assunto" className="form-label">Assunto</label>
+            <select
+              className={`form-select${erros.assunto ? ' campo-invalido' : ''}`}
+              id="assunto"
+              name="assunto"
+              value={campos.assunto}
+              onChange={(event) => atualizarCampo('assunto', event.target.value)}
+            >
+              <option value="">Escolha uma opção</option>
+              <option value="duvida">Dúvida</option>
+              <option value="sugestao">Sugestão</option>
+              <option value="participar">Quero participar</option>
+              <option value="outro">Outro</option>
+            </select>
+            <span className={`texto-erro${erros.assunto ? ' visivel' : ''}`}>{erros.assunto}</span>
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="mensagem" className="form-label">Mensagem</label>
+            <textarea
+              className={`form-control${erros.mensagem ? ' campo-invalido' : ''}`}
+              id="mensagem"
+              name="mensagem"
+              rows="4"
+              maxLength="500"
+              placeholder="Digite sua mensagem"
+              value={campos.mensagem}
+              onChange={(event) => atualizarCampo('mensagem', event.target.value)}
+            ></textarea>
+            <div className="contador-chars">{campos.mensagem.length}/500</div>
+            <span className={`texto-erro${erros.mensagem ? ' visivel' : ''}`}>{erros.mensagem}</span>
+          </div>
+
+          <div className="modal-footer px-0 pb-0">
+            <button type="button" className="btn btn-secondary" onClick={fechar}>Fechar</button>
+            <button type="submit" className="btn btn-success">Enviar</button>
+          </div>
+        </form>
+      </Modal.Body>
+    </Modal>
   )
 }
 

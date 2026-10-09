@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { Modal } from 'bootstrap'
+import { useState } from 'react'
+import Modal from 'react-bootstrap/Modal'
 
 const CAMPOS_INICIAIS = {
   email: '',
@@ -13,13 +13,18 @@ function validarEmailFormato(valor) {
   return null
 }
 
-function EntrarModal() {
-  const modalRef = useRef(null)
+function EntrarModal({ aberto, onFechar }) {
   const [campos, setCampos] = useState(CAMPOS_INICIAIS)
   const [erros, setErros] = useState({})
 
   function atualizarCampo(campo, valor) {
     setCampos((atual) => ({ ...atual, [campo]: valor }))
+  }
+
+  function fechar() {
+    setCampos(CAMPOS_INICIAIS)
+    setErros({})
+    onFechar()
   }
 
   function handleSubmit(event) {
@@ -37,66 +42,53 @@ function EntrarModal() {
     setErros(novosErros)
 
     if (Object.keys(novosErros).length === 0) {
-      setCampos(CAMPOS_INICIAIS)
-      Modal.getInstance(modalRef.current)?.hide()
+      fechar()
     }
   }
 
   return (
-    <div
-      className="modal fade"
-      id="entrarModal"
-      tabIndex="-1"
-      aria-labelledby="entrarModalLabel"
-      aria-hidden="true"
-      ref={modalRef}
-    >
-      <div className="modal-dialog">
-        <div className="modal-content contact-modal">
-          <div className="modal-header">
-            <h2 className="modal-title" id="entrarModalLabel">Entrar</h2>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+    <Modal show={aberto} onHide={fechar} contentClassName="contact-modal" aria-labelledby="entrarModalLabel">
+      <Modal.Header closeButton closeLabel="Fechar">
+        <Modal.Title as="h2" id="entrarModalLabel">Entrar</Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+        <form id="formEntrar" noValidate onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="emailEntrar" className="form-label">E-mail</label>
+            <input
+              type="email"
+              className={`form-control${erros.email ? ' campo-invalido' : ''}`}
+              id="emailEntrar"
+              name="emailEntrar"
+              placeholder="exemplo@email.com"
+              value={campos.email}
+              onChange={(event) => atualizarCampo('email', event.target.value)}
+            />
+            <span className={`texto-erro${erros.email ? ' visivel' : ''}`}>{erros.email}</span>
           </div>
 
-          <div className="modal-body">
-            <form id="formEntrar" noValidate onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="emailEntrar" className="form-label">E-mail</label>
-                <input
-                  type="email"
-                  className={`form-control${erros.email ? ' campo-invalido' : ''}`}
-                  id="emailEntrar"
-                  name="emailEntrar"
-                  placeholder="exemplo@email.com"
-                  value={campos.email}
-                  onChange={(event) => atualizarCampo('email', event.target.value)}
-                />
-                <span className={`texto-erro${erros.email ? ' visivel' : ''}`}>{erros.email}</span>
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="senhaEntrar" className="form-label">Senha</label>
-                <input
-                  type="password"
-                  className={`form-control${erros.senha ? ' campo-invalido' : ''}`}
-                  id="senhaEntrar"
-                  name="senhaEntrar"
-                  placeholder="Digite sua senha"
-                  value={campos.senha}
-                  onChange={(event) => atualizarCampo('senha', event.target.value)}
-                />
-                <span className={`texto-erro${erros.senha ? ' visivel' : ''}`}>{erros.senha}</span>
-              </div>
-
-              <div className="modal-footer px-0 pb-0">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" className="btn btn-success">Entrar</button>
-              </div>
-            </form>
+          <div className="mb-3">
+            <label htmlFor="senhaEntrar" className="form-label">Senha</label>
+            <input
+              type="password"
+              className={`form-control${erros.senha ? ' campo-invalido' : ''}`}
+              id="senhaEntrar"
+              name="senhaEntrar"
+              placeholder="Digite sua senha"
+              value={campos.senha}
+              onChange={(event) => atualizarCampo('senha', event.target.value)}
+            />
+            <span className={`texto-erro${erros.senha ? ' visivel' : ''}`}>{erros.senha}</span>
           </div>
-        </div>
-      </div>
-    </div>
+
+          <div className="modal-footer px-0 pb-0">
+            <button type="button" className="btn btn-secondary" onClick={fechar}>Fechar</button>
+            <button type="submit" className="btn btn-success">Entrar</button>
+          </div>
+        </form>
+      </Modal.Body>
+    </Modal>
   )
 }
 

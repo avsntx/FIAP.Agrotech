@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 
-function Home() {
+function Home({ onAbrirModal }) {
   return (
     <section id="inicio">
       <div className="container main text-center">
@@ -12,9 +12,9 @@ function Home() {
         </div>
 
         <div className="d-flex">
-          <a className="btn btn-success" data-bs-toggle="modal" data-bs-target="#criarContaModal">
+          <button type="button" className="btn btn-success" onClick={() => onAbrirModal('criarConta')}>
             Criar minha conta
-          </a>
+          </button>
           <Link className="btn btn-btn" to="/diretorio">
             Explorar a rede
           </Link>
