@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Alert from 'react-bootstrap/Alert'
 import Modal from 'react-bootstrap/Modal'
 import { validarEmailFormato, validarNomeCompleto } from '../utils/validacoes.js'
 
@@ -12,6 +13,7 @@ const CAMPOS_INICIAIS = {
 function ContatoModal({ aberto, onFechar }) {
   const [campos, setCampos] = useState(CAMPOS_INICIAIS)
   const [erros, setErros] = useState({})
+  const [enviado, setEnviado] = useState(false)
 
   function atualizarCampo(campo, valor) {
     setCampos((atual) => ({ ...atual, [campo]: valor }))
@@ -20,6 +22,7 @@ function ContatoModal({ aberto, onFechar }) {
   function fechar() {
     setCampos(CAMPOS_INICIAIS)
     setErros({})
+    setEnviado(false)
     onFechar()
   }
 
@@ -45,7 +48,8 @@ function ContatoModal({ aberto, onFechar }) {
     setErros(novosErros)
 
     if (Object.keys(novosErros).length === 0) {
-      fechar()
+      setCampos(CAMPOS_INICIAIS)
+      setEnviado(true)
     }
   }
 
@@ -56,75 +60,82 @@ function ContatoModal({ aberto, onFechar }) {
       </Modal.Header>
 
       <Modal.Body>
-        <form id="formContato" noValidate onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="nome" className="form-label">Nome completo</label>
-            <input
-              type="text"
-              className={`form-control${erros.nome ? ' campo-invalido' : ''}`}
-              id="nome"
-              name="nome"
-              maxLength="80"
-              placeholder="Digite seu nome completo"
-              value={campos.nome}
-              onChange={(event) => atualizarCampo('nome', event.target.value)}
-            />
-            <span className={`texto-erro${erros.nome ? ' visivel' : ''}`}>{erros.nome}</span>
+        {enviado ? (
+          <div className="mensagem-sucesso">
+            <Alert variant="success">Mensagem enviada! Obrigado pelo contato, vamos responder em breve.</Alert>
+            <button type="button" className="btn btn-success" onClick={fechar}>Fechar</button>
           </div>
+        ) : (
+          <form id="formContato" noValidate onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="nome" className="form-label">Nome completo</label>
+              <input
+                type="text"
+                className={`form-control${erros.nome ? ' campo-invalido' : ''}`}
+                id="nome"
+                name="nome"
+                maxLength="80"
+                placeholder="Digite seu nome completo"
+                value={campos.nome}
+                onChange={(event) => atualizarCampo('nome', event.target.value)}
+              />
+              <span className={`texto-erro${erros.nome ? ' visivel' : ''}`}>{erros.nome}</span>
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">E-mail</label>
-            <input
-              type="email"
-              className={`form-control${erros.email ? ' campo-invalido' : ''}`}
-              id="email"
-              name="email"
-              placeholder="exemplo@email.com"
-              value={campos.email}
-              onChange={(event) => atualizarCampo('email', event.target.value)}
-            />
-            <span className={`texto-erro${erros.email ? ' visivel' : ''}`}>{erros.email}</span>
-          </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">E-mail</label>
+              <input
+                type="email"
+                className={`form-control${erros.email ? ' campo-invalido' : ''}`}
+                id="email"
+                name="email"
+                placeholder="exemplo@email.com"
+                value={campos.email}
+                onChange={(event) => atualizarCampo('email', event.target.value)}
+              />
+              <span className={`texto-erro${erros.email ? ' visivel' : ''}`}>{erros.email}</span>
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="assunto" className="form-label">Assunto</label>
-            <select
-              className={`form-select${erros.assunto ? ' campo-invalido' : ''}`}
-              id="assunto"
-              name="assunto"
-              value={campos.assunto}
-              onChange={(event) => atualizarCampo('assunto', event.target.value)}
-            >
-              <option value="">Escolha uma opção</option>
-              <option value="duvida">Dúvida</option>
-              <option value="sugestao">Sugestão</option>
-              <option value="participar">Quero participar</option>
-              <option value="outro">Outro</option>
-            </select>
-            <span className={`texto-erro${erros.assunto ? ' visivel' : ''}`}>{erros.assunto}</span>
-          </div>
+            <div className="mb-3">
+              <label htmlFor="assunto" className="form-label">Assunto</label>
+              <select
+                className={`form-select${erros.assunto ? ' campo-invalido' : ''}`}
+                id="assunto"
+                name="assunto"
+                value={campos.assunto}
+                onChange={(event) => atualizarCampo('assunto', event.target.value)}
+              >
+                <option value="">Escolha uma opção</option>
+                <option value="duvida">Dúvida</option>
+                <option value="sugestao">Sugestão</option>
+                <option value="participar">Quero participar</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span className={`texto-erro${erros.assunto ? ' visivel' : ''}`}>{erros.assunto}</span>
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="mensagem" className="form-label">Mensagem</label>
-            <textarea
-              className={`form-control${erros.mensagem ? ' campo-invalido' : ''}`}
-              id="mensagem"
-              name="mensagem"
-              rows="4"
-              maxLength="500"
-              placeholder="Digite sua mensagem"
-              value={campos.mensagem}
-              onChange={(event) => atualizarCampo('mensagem', event.target.value)}
-            ></textarea>
-            <div className="contador-chars">{campos.mensagem.length}/500</div>
-            <span className={`texto-erro${erros.mensagem ? ' visivel' : ''}`}>{erros.mensagem}</span>
-          </div>
+            <div className="mb-3">
+              <label htmlFor="mensagem" className="form-label">Mensagem</label>
+              <textarea
+                className={`form-control${erros.mensagem ? ' campo-invalido' : ''}`}
+                id="mensagem"
+                name="mensagem"
+                rows="4"
+                maxLength="500"
+                placeholder="Digite sua mensagem"
+                value={campos.mensagem}
+                onChange={(event) => atualizarCampo('mensagem', event.target.value)}
+              ></textarea>
+              <div className="contador-chars">{campos.mensagem.length}/500</div>
+              <span className={`texto-erro${erros.mensagem ? ' visivel' : ''}`}>{erros.mensagem}</span>
+            </div>
 
-          <div className="modal-footer px-0 pb-0">
-            <button type="button" className="btn btn-secondary" onClick={fechar}>Fechar</button>
-            <button type="submit" className="btn btn-success">Enviar</button>
-          </div>
-        </form>
+            <div className="modal-footer px-0 pb-0">
+              <button type="button" className="btn btn-secondary" onClick={fechar}>Fechar</button>
+              <button type="submit" className="btn btn-success">Enviar</button>
+            </div>
+          </form>
+        )}
       </Modal.Body>
     </Modal>
   )

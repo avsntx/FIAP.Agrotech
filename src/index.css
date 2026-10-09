@@ -280,6 +280,15 @@ footer {
   box-shadow: 0 0 0 0.2rem rgba(var(--verde-principal-rgb), 0.15);
 }
 
+.mensagem-sucesso {
+  text-align: center;
+}
+
+.mensagem-sucesso .alert {
+  text-align: left;
+  font-weight: 600;
+}
+
 #sobre {
   padding: 4rem 11rem;
 }
