@@ -95,7 +95,7 @@ body {
 }
 
 .container.main {
-  padding: 8rem 0 6rem;
+  padding: 7rem 0 4rem;
   color: var(--marrom-texto);
   display: flex;
   flex-direction: column;
@@ -188,6 +188,101 @@ body {
 .container.main .btn-video:hover {
   transform: translateY(-3px);
   background-color: var(--verde-hover);
+}
+
+.novidade {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background-color: var(--verde-hover);
+  color: var(--verde-principal);
+  font-weight: 700;
+  font-size: 14.4px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.novidade:hover {
+  transform: translateY(-2px);
+  color: var(--verde-principal);
+}
+
+.secao {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.titulo-secao {
+  color: var(--marrom-texto);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.secao .card {
+  background-color: #fffaf2;
+  border: 1px solid rgba(var(--marrom-texto-rgb), 0.12);
+  border-radius: 14px;
+}
+
+.secao .card-destaque {
+  border: 2px solid var(--verde-principal);
+}
+
+.card-passo h3,
+.card-destaque h2 {
+  color: var(--marrom-texto);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+}
+
+.card-passo p,
+.card-destaque p {
+  color: var(--marrom-texto);
+}
+
+.passo-icone {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--verde-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.card-destaque .btn-success {
+  background-color: var(--verde-principal);
+  border-color: var(--verde-principal);
+  border-radius: 13px;
+  font-weight: 700;
+  padding: 12px 24px;
+}
+
+.card-destaque .btn-contorno {
+  border: 2px solid var(--terracota);
+  border-radius: 13px;
+  color: var(--marrom-texto);
+  font-weight: 700;
+  padding: 12px 24px;
+}
+
+.card-destaque .btn-contorno:hover {
+  border-color: var(--terracota);
+  background-color: rgba(var(--terracota-rgb), 0.2);
+  color: var(--marrom-texto);
+}
+
+.video-pitch {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 footer {
@@ -472,9 +567,10 @@ footer {
   box-shadow: var(--shadow-sm);
 }
 
-#rastreabilidade .legenda-qr {
+.legenda-qr {
   font-size: 13.6px;
   margin: 8px 0 0;
+  color: var(--marrom-texto);
   opacity: 0.8;
 }
 
