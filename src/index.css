@@ -238,6 +238,11 @@ footer {
   padding: 8px 0;
 }
 
+.navegation .btn:hover,
+.compromisse .btn:hover {
+  color: var(--dourado);
+}
+
 .footer-link {
   margin-left: -10px;
   color: var(--dourado);
