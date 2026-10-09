@@ -287,6 +287,42 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+.video-capa {
+  border: none;
+  padding: 0;
+  background-color: var(--marrom-texto);
+  cursor: pointer;
+}
+
+.video-capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: var(--verde-principal);
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.video-capa:hover .video-play {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
 footer {
   background-color: var(--marrom-texto);
   font-family: "Nunito Sans", Georgia, serif;

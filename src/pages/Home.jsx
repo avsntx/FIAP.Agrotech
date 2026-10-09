@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router'
 import { QRCodeSVG } from 'qrcode.react'
 import diretorio from '../data/participantes.js'
@@ -24,6 +25,7 @@ const passos = [
 
 function Home({ onAbrirModal }) {
   const loteExemplo = diretorio.buscarLote('NTV-BN8K2Q')
+  const [mostrarVideo, setMostrarVideo] = useState(false)
 
   return (
     <>
@@ -116,13 +118,19 @@ function Home({ onAbrirModal }) {
       <section className="secao container">
         <h2 className="titulo-secao">Assista ao nosso pitch</h2>
         <div className="video-pitch ratio ratio-16x9">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${ID_VIDEO}`}
-            title="Pitch do projeto Nativy"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
+          {mostrarVideo ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${ID_VIDEO}?autoplay=1`}
+              title="Pitch do projeto Nativy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <button type="button" className="video-capa" onClick={() => setMostrarVideo(true)} aria-label="Assistir ao pitch do projeto Nativy">
+              <img src={`https://i.ytimg.com/vi/${ID_VIDEO}/hqdefault.jpg`} alt="" loading="lazy" />
+              <span className="video-play" aria-hidden="true">▶</span>
+            </button>
+          )}
         </div>
       </section>
     </>
