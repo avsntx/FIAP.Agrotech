@@ -391,12 +391,17 @@ footer {
 }
 
 #sobre h1,
-#sobre h3,
-#sobre h4,
-#sobre h5 {
+#sobre h2,
+#sobre .numero-ods {
   color: var(--marrom-texto);
   font-family: "Fraunces", Georgia, serif;
   font-weight: 700;
+}
+
+#sobre .numero-ods {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 #sobre .card {
@@ -421,8 +426,7 @@ footer {
   background-color: #dda63a;
 }
 
-#sobre .card-ods h1,
-#sobre .card-ods h4,
+#sobre .card-ods h2,
 #sobre .card-ods p {
   color: var(--marrom-texto);
 }
