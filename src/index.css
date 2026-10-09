@@ -414,6 +414,59 @@ footer {
   opacity: 0.8;
 }
 
+#rastreabilidade {
+  padding: 4rem 11rem;
+}
+
+#rastreabilidade h1,
+#rastreabilidade h2,
+#rastreabilidade h3 {
+  color: var(--marrom-texto);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+}
+
+#rastreabilidade p,
+#rastreabilidade li,
+#rastreabilidade .form-label {
+  color: var(--marrom-texto);
+}
+
+#rastreabilidade .form-label {
+  font-weight: 700;
+}
+
+#rastreabilidade .form-control:focus,
+#rastreabilidade .form-select:focus {
+  border-color: var(--verde-principal);
+  box-shadow: 0 0 0 0.2rem rgba(var(--verde-principal-rgb), 0.15);
+}
+
+#rastreabilidade .card {
+  background-color: #fffaf2;
+  border: 1px solid rgba(var(--marrom-texto-rgb), 0.12);
+  border-radius: 14px;
+}
+
+#rastreabilidade .card-lote-novo {
+  border: 2px solid var(--verde-principal);
+}
+
+#rastreabilidade .btn-success {
+  background-color: var(--verde-principal);
+  border-color: var(--verde-principal);
+  border-radius: 13px;
+  font-weight: 700;
+  padding: 10px 24px;
+}
+
+#rastreabilidade .codigo-lote {
+  font-family: Consolas, monospace;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--verde-principal);
+}
+
 #nao-encontrada {
   padding: 6rem 1rem;
   color: var(--marrom-texto);
@@ -514,6 +567,10 @@ footer {
   }
 
   #diretorio {
+    padding: 3rem 1rem;
+  }
+
+  #rastreabilidade {
     padding: 3rem 1rem;
   }
 }

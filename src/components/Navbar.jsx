@@ -33,6 +33,9 @@ function Navbar({ onAbrirModal }) {
             <Nav.Link as={NavLink} to="/diretorio" onClick={fecharMenu}>
               Diretório
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/rastreabilidade" onClick={fecharMenu}>
+              Rastreabilidade
+            </Nav.Link>
             <Nav.Link as={NavLink} to="/sobre" onClick={fecharMenu}>
               Sobre
             </Nav.Link>

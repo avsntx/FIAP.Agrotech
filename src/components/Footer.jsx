@@ -21,6 +21,7 @@ function Footer({ onAbrirModal }) {
           <span>NAVEGAR</span>
           <Link className="btn" to="/">Início</Link>
           <Link className="btn" to="/diretorio">Diretório</Link>
+          <Link className="btn" to="/rastreabilidade">Rastreabilidade</Link>
           <Link className="btn" to="/sobre">Sobre o Projeto</Link>
           <button type="button" className="btn" onClick={() => onAbrirModal('criarConta')}>
             Cadastro

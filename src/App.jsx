@@ -8,6 +8,7 @@ import ContatoModal from './components/ContatoModal.jsx'
 import Home from './pages/Home.jsx'
 import Sobre from './pages/Sobre.jsx'
 import Diretorio from './pages/Diretorio.jsx'
+import Rastreabilidade from './pages/Rastreabilidade.jsx'
 import NaoEncontrada from './pages/NaoEncontrada.jsx'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home onAbrirModal={setModalAberto} />} />
           <Route path="/diretorio" element={<Diretorio />} />
+          <Route path="/rastreabilidade" element={<Rastreabilidade />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<NaoEncontrada />} />
         </Routes>
