@@ -1,16 +1,10 @@
 import { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
+import { validarEmailFormato } from '../utils/validacoes.js'
 
 const CAMPOS_INICIAIS = {
   email: '',
   senha: '',
-}
-
-function validarEmailFormato(valor) {
-  if (valor.trim() === '') return 'O e-mail não pode ficar em branco.'
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!regex.test(valor)) return 'Informe um e-mail válido.'
-  return null
 }
 
 function EntrarModal({ aberto, onFechar }) {
