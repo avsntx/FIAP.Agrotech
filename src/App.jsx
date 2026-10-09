@@ -8,6 +8,7 @@ import ContatoModal from './components/ContatoModal.jsx'
 import Home from './pages/Home.jsx'
 import Sobre from './pages/Sobre.jsx'
 import Diretorio from './pages/Diretorio.jsx'
+import NaoEncontrada from './pages/NaoEncontrada.jsx'
 
 function App() {
   const location = useLocation()
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/diretorio" element={<Diretorio />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="*" element={<NaoEncontrada />} />
         </Routes>
       </main>
       <Footer />

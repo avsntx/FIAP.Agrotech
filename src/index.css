@@ -344,6 +344,33 @@ footer {
   font-family: "Nunito Sans", Georgia, serif;
 }
 
+#nao-encontrada {
+  padding: 6rem 1rem;
+  color: var(--marrom-texto);
+}
+
+#nao-encontrada h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--verde-principal);
+}
+
+#nao-encontrada h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#nao-encontrada .btn-success {
+  background-color: var(--verde-principal);
+  border-color: var(--verde-principal);
+  border-radius: 13px;
+  font-weight: 700;
+  padding: 12px 28px;
+  margin-top: 1rem;
+}
+
 .texto-erro {
   color: var(--vermelho-erro);
   font-size: 13px;
