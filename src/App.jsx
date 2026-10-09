@@ -9,6 +9,7 @@ import Home from './pages/Home.jsx'
 import Sobre from './pages/Sobre.jsx'
 import Diretorio from './pages/Diretorio.jsx'
 import Rastreabilidade from './pages/Rastreabilidade.jsx'
+import Rastreio from './pages/Rastreio.jsx'
 import NaoEncontrada from './pages/NaoEncontrada.jsx'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<Home onAbrirModal={setModalAberto} />} />
           <Route path="/diretorio" element={<Diretorio />} />
           <Route path="/rastreabilidade" element={<Rastreabilidade />} />
+          <Route path="/rastreio/:codigo" element={<Rastreio />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<NaoEncontrada />} />
         </Routes>

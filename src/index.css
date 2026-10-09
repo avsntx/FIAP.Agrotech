@@ -467,6 +467,88 @@ footer {
   color: var(--verde-principal);
 }
 
+.link-rastreio {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--verde-principal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-rastreio:hover {
+  text-decoration: underline;
+}
+
+#rastreio {
+  padding: 4rem 11rem;
+}
+
+#rastreio h1,
+#rastreio h2,
+#rastreio h3,
+#rastreio h4 {
+  color: var(--marrom-texto);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+}
+
+#rastreio p {
+  color: var(--marrom-texto);
+}
+
+#rastreio .card {
+  background-color: #fffaf2;
+  border: 1px solid rgba(var(--marrom-texto-rgb), 0.12);
+  border-radius: 14px;
+}
+
+#rastreio .card-ods {
+  background-color: #dda63a;
+}
+
+#rastreio .card-ods h4,
+#rastreio .card-ods p {
+  color: var(--bege-navbar);
+}
+
+#rastreio .codigo-lote {
+  font-family: Consolas, monospace;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--verde-principal);
+}
+
+#rastreio .rotulo {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #8b5a3c;
+}
+
+#rastreio .destaque {
+  color: var(--verde-principal);
+  font-weight: 700;
+}
+
+#rastreio .btn-success {
+  background-color: var(--verde-principal);
+  border-color: var(--verde-principal);
+  border-radius: 13px;
+  font-weight: 700;
+  padding: 10px 24px;
+}
+
+.voltar {
+  color: var(--verde-principal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
 #nao-encontrada {
   padding: 6rem 1rem;
   color: var(--marrom-texto);
@@ -571,6 +653,10 @@ footer {
   }
 
   #rastreabilidade {
+    padding: 3rem 1rem;
+  }
+
+  #rastreio {
     padding: 3rem 1rem;
   }
 }

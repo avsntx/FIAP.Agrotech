@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import diretorio from '../data/participantes.js'
 import { dataDaquiA, formatarData } from '../utils/datas.js'
 
@@ -91,7 +92,7 @@ function Rastreabilidade() {
     setCampos(CAMPOS_INICIAIS)
   }
 
-  const lotes = diretorio.getLotes().reverse().sort((a, b) => b.dataColheita.localeCompare(a.dataColheita))
+  const lotes = diretorio.getLotes().sort((a, b) => b.dataColheita.localeCompare(a.dataColheita))
 
   return (
     <section id="rastreabilidade">
@@ -216,6 +217,9 @@ function Rastreabilidade() {
                   <strong>{ultimoLote.produto}</strong> · {ultimoLote.quantidade} {ultimoLote.unidade}
                 </p>
                 <p className="mb-0">{ultimoLote.produtor.nome}</p>
+                <Link className="btn btn-success mt-3" to={ultimoLote.getLinkRastreio()}>
+                  Ver página do lote
+                </Link>
               </div>
             </div>
           ) : (
@@ -248,6 +252,9 @@ function Rastreabilidade() {
                 <p className="mb-0">
                   Colheita: {formatarData(lote.dataColheita)} · Validade: {formatarData(lote.validade)}
                 </p>
+                <Link className="link-rastreio" to={lote.getLinkRastreio()}>
+                  Ver rastreio →
+                </Link>
               </div>
             </div>
           </div>
