@@ -334,7 +334,8 @@ footer {
   padding: 4rem 11rem;
 }
 
-#diretorio h1 {
+#diretorio h1,
+#diretorio h2 {
   color: var(--marrom-texto);
   font-family: "Fraunces", Georgia, serif;
   font-weight: 700;
@@ -356,6 +357,61 @@ footer {
 #diretorio li {
   color: var(--marrom-texto);
   font-family: "Nunito Sans", Georgia, serif;
+}
+
+#diretorio .destaque {
+  color: var(--verde-principal);
+  font-weight: 700;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-filtro {
+  border: 2px solid var(--terracota);
+  border-radius: 13px;
+  color: var(--marrom-texto);
+  font-weight: 700;
+  padding: 6px 16px;
+}
+
+.btn-filtro:hover {
+  border-color: var(--terracota);
+  background-color: rgba(var(--terracota-rgb), 0.2);
+  color: var(--marrom-texto);
+}
+
+.btn-filtro.ativo,
+.btn-filtro.ativo:hover {
+  border-color: var(--verde-principal);
+  background-color: var(--verde-principal);
+  color: white;
+}
+
+.selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.selo {
+  background-color: #f6ead2;
+  color: var(--marrom-texto);
+  border: 1px solid rgba(var(--marrom-texto-rgb), 0.2);
+  border-radius: 20px;
+  font-size: 12.8px;
+  font-weight: 700;
+  padding: 3px 10px;
+}
+
+.aviso-dados {
+  font-size: 13.6px;
+  margin-top: 2rem;
+  opacity: 0.8;
 }
 
 #nao-encontrada {

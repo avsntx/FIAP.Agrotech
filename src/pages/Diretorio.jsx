@@ -1,49 +1,7 @@
 import { useState } from 'react'
+import diretorio from '../data/participantes.js'
 
-const itens = [
-  {
-    id: 1,
-    nome: 'Produtor A',
-    tipo: 'Produtor',
-    localizacao: 'Vale do Ribeira, SP',
-    descricao: 'Agricultura familiar com cultivo agroecológico de banana, mandioca e palmito.',
-  },
-  {
-    id: 2,
-    nome: 'Empresa A',
-    tipo: 'Estabelecimento',
-    localizacao: 'São Paulo, SP',
-    descricao: 'Doa diariamente o excedente de pães e bolos ao final do expediente.',
-  },
-  {
-    id: 3,
-    nome: 'ONG A',
-    tipo: 'ONG',
-    localizacao: 'Campinas, SP',
-    descricao: 'Distribui refeições e cestas básicas para famílias em situação de vulnerabilidade.',
-  },
-  {
-    id: 4,
-    nome: 'Produtor B',
-    tipo: 'Produtor',
-    localizacao: 'Cananéia, SP',
-    descricao: 'Pesca artesanal sustentável de comunidades caiçaras.',
-  },
-  {
-    id: 5,
-    nome: 'Empresa B',
-    tipo: 'Estabelecimento',
-    localizacao: 'Sorocaba, SP',
-    descricao: 'Hortifruti que repassa produtos próximos do vencimento para ONGs parceiras.',
-  },
-  {
-    id: 6,
-    nome: 'ONG B',
-    tipo: 'ONG',
-    localizacao: 'Bertioga, SP',
-    descricao: 'Produção de artesanato e alimentos tradicionais por povos indígenas.',
-  },
-]
+const tipos = ['Todos', 'Produtor', 'Estabelecimento', 'ONG']
 
 const classesPorTipo = {
   Produtor: 'bg-success',
@@ -53,15 +11,9 @@ const classesPorTipo = {
 
 function Diretorio() {
   const [busca, setBusca] = useState('')
+  const [tipo, setTipo] = useState('Todos')
 
-  const termo = busca.trim().toLowerCase()
-  const itensFiltrados = itens.filter((item) => {
-    return (
-      item.nome.toLowerCase().includes(termo) ||
-      item.tipo.toLowerCase().includes(termo) ||
-      item.localizacao.toLowerCase().includes(termo)
-    )
-  })
+  const resultados = diretorio.buscar(busca, tipo)
 
   return (
     <section id="diretorio">
@@ -72,38 +24,66 @@ function Diretorio() {
         </div>
       </div>
 
-      <div className="row mb-4">
-        <div className="col-sm-6">
+      <div className="row mb-4 g-3 align-items-center">
+        <div className="col-lg-6">
           <input
             type="text"
             className="form-control"
             placeholder="Buscar por nome, tipo ou localização..."
+            aria-label="Buscar no diretório"
             value={busca}
             onChange={(event) => setBusca(event.target.value)}
           />
         </div>
+        <div className="col-lg-6">
+          <div className="filtros">
+            {tipos.map((item) => (
+              <button
+                key={item}
+                type="button"
+                className={`btn btn-filtro${tipo === item ? ' ativo' : ''}`}
+                aria-pressed={tipo === item}
+                onClick={() => setTipo(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="row g-4">
-        {itensFiltrados.map((item) => (
-          <div className="col-sm-4" key={item.id}>
+        {resultados.map((participante) => (
+          <div className="col-md-6 col-lg-4" key={participante.id}>
             <div className="card h-100">
               <div className="card-body p-4">
-                <span className={`badge ${classesPorTipo[item.tipo]} mb-2`}>{item.tipo}</span>
-                <h5 className="mb-2">{item.nome}</h5>
-                <p className="mb-2">{item.localizacao}</p>
-                <p className="mb-0">{item.descricao}</p>
+                <span className={`badge ${classesPorTipo[participante.getTipo()]} mb-2`}>{participante.getTipo()}</span>
+                <h2 className="h5 mb-2">{participante.nome}</h2>
+                <p className="mb-2">{participante.getLocalizacao()}</p>
+                <p className="mb-2">{participante.descricao}</p>
+                <p className="destaque mb-0">{participante.getDestaque()}</p>
+                {participante.selos && (
+                  <div className="selos">
+                    {participante.selos.map((selo) => (
+                      <span key={selo.id} className="selo" title={selo.getDescricaoCompleta()}>
+                        {selo.nome}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         ))}
 
-        {itensFiltrados.length === 0 && (
+        {resultados.length === 0 && (
           <div className="col-12">
-            <p className="mb-0">Nenhum resultado encontrado para "{busca}".</p>
+            <p className="mb-0">Nenhum participante encontrado.</p>
           </div>
         )}
       </div>
+
+      <p className="aviso-dados">Os participantes do diretório são fictícios e servem só para demonstração.</p>
     </section>
   )
 }
