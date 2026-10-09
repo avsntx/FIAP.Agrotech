@@ -60,9 +60,7 @@ function Rastreio() {
               <div className="row g-3">
                 <div className="col-sm-4">
                   <span className="rotulo">Quantidade</span>
-                  <p className="mb-0">
-                    {lote.quantidade} {lote.unidade}
-                  </p>
+                  <p className="mb-0">{lote.getQuantidadeFormatada()}</p>
                 </div>
                 <div className="col-sm-4">
                   <span className="rotulo">Colheita</span>

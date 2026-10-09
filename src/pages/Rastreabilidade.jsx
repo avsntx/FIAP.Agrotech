@@ -215,7 +215,7 @@ function Rastreabilidade() {
                 <h2 className="mb-3">Lote cadastrado!</h2>
                 <p className="codigo-lote mb-2">{ultimoLote.codigo}</p>
                 <p className="mb-1">
-                  <strong>{ultimoLote.produto}</strong> · {ultimoLote.quantidade} {ultimoLote.unidade}
+                  <strong>{ultimoLote.produto}</strong> · {ultimoLote.getQuantidadeFormatada()}
                 </p>
                 <p className="mb-0">{ultimoLote.produtor.nome}</p>
                 <div className="qr-code mt-3">
@@ -259,7 +259,7 @@ function Rastreabilidade() {
                   <h3 className="h5 mb-1">{lote.produto}</h3>
                   <p className="codigo-lote mb-2">{lote.codigo}</p>
                   <p className="mb-1">
-                    {lote.quantidade} {lote.unidade} · {lote.produtor.nome}
+                    {lote.getQuantidadeFormatada()} · {lote.produtor.nome}
                   </p>
                   <p className="mb-0">
                     Colheita: {formatarData(lote.dataColheita)} · Validade: {formatarData(lote.validade)}

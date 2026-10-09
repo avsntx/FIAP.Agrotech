@@ -30,6 +30,10 @@ class Lote {
     return 'Dentro da validade'
   }
 
+  getQuantidadeFormatada() {
+    return `${Number(this.quantidade).toLocaleString('pt-BR')} ${this.unidade}`
+  }
+
   getLinkRastreio() {
     const parametros = new URLSearchParams({
       produto: this.produto,
