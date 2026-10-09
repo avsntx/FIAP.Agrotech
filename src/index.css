@@ -424,7 +424,7 @@ footer {
 #sobre .card-ods h1,
 #sobre .card-ods h4,
 #sobre .card-ods p {
-  color: var(--bege-navbar);
+  color: var(--marrom-texto);
 }
 
 #diretorio {
@@ -617,7 +617,7 @@ footer {
 
 #rastreio .card-ods h4,
 #rastreio .card-ods p {
-  color: var(--bege-navbar);
+  color: var(--marrom-texto);
 }
 
 #rastreio .codigo-lote {
