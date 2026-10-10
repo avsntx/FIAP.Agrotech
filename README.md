@@ -7,7 +7,7 @@ Projeto desenvolvido para o PBL Agrotech da FIAP. Na Fase 5 o site foi reconstru
 ## Links
 
 - Deploy (Vercel): https://fiap-agrotech-eight.vercel.app
-- Pitch Video (Fase 6): (colocar o link do video novo aqui)
+- Pitch Video (Fase 6): https://www.youtube.com/watch?v=85pNBFhUCdc
 - Pitch Video (Fase 5): https://www.youtube.com/watch?v=FfcAUoAydCg
 
 ## Nova funcionalidade: Rastreabilidade com QR Code

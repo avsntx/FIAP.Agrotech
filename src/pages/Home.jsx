@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { QRCodeSVG } from 'qrcode.react'
 import diretorio from '../data/participantes.js'
 
-const ID_VIDEO = 'FfcAUoAydCg'
+const ID_VIDEO = '85pNBFhUCdc'
 
 const passos = [
   {
